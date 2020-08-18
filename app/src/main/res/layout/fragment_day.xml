@@ -14,9 +14,9 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:background="@color/colorPrimary"
-        android:elevation="6dp"
+        android:elevation="3dp"
         android:src="@drawable/ic_add"
-        app:backgroundTint="@color/linkedin"
+        app:backgroundTint="@color/colorPrimary"
         app:fabSize="normal" />
 
     <include layout="@layout/layout_bottom_sheet" />
