@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import androidx.fragment.app.Fragment
+import androidx.room.Room
 import com.brkcnszgn.dateandtimepickerdialog.ClickListener
+import com.example.thingstodoapp.DB.AppDatabase
 import com.example.thingstodoapp.R
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.fragment_day.*
@@ -48,7 +50,7 @@ class DayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+/*        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(p0: AdapterView<*>?) {
                 TODO("Not yet implemented")
             }
@@ -61,7 +63,7 @@ class DayFragment : Fragment() {
             ) {
             }
 
-        }
+        }*/
         spinnersound.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(p0: AdapterView<*>?) {
                 TODO("Not yet implemented")
@@ -84,8 +86,13 @@ class DayFragment : Fragment() {
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
             }
         }
-        datetime.setOnClickListener(ClickListener {})
-        datetime2.setOnClickListener(ClickListener {})
+        datetime_start.setOnClickListener(ClickListener {})
+        datetime_end.setOnClickListener(ClickListener {})
+
+        val db: AppDatabase = Room.databaseBuilder(view.context, AppDatabase::class.java, "todo")
+            .allowMainThreadQueries()
+            .fallbackToDestructiveMigration()
+            .build()
 
     }
 }

@@ -1,9 +1,9 @@
-package com.example.thingstodoapp
+package com.example.thingstodoapp.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
+import com.example.thingstodoapp.R
 import com.example.thingstodoapp.fragment.DayFragment
 import com.example.thingstodoapp.fragment.MountFragment
 import com.example.thingstodoapp.fragment.WeekFragment

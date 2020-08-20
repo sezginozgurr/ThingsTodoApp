@@ -29,44 +29,54 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:hint="Yeni Gorev Girin" />
+            android:hint="Ne Yapilacak" />
 
-        <LinearLayout
+        <EditText
+            android:id="@+id/editTextTextMultiLine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginHorizontal="16dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Not Ekleyin"
+            android:inputType="textMultiLine" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="16dp"
-                android:layout_marginStart="16dp"
-                android:text="Renginizi Belirleyin" />
+        <!--        <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginVertical="16dp"
-                android:entries="@array/renkler" />
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="16dp"
+                        android:layout_marginStart="16dp"
+                        android:text="Renginizi Belirleyin" />
+
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginVertical="16dp"
+                        android:entries="@array/renkler" />
+                </LinearLayout>-->
 
         <com.brkcnszgn.dateandtimepickerdialog.DateTimePickerView
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:id="@+id/datetime"
+            android:id="@+id/datetime_start"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             app:dtpv_title="Hatirlatma Tarihi Secin"
             tools:ignore="MissingConstraints" />
 
         <com.brkcnszgn.dateandtimepickerdialog.DateTimePickerView
-            android:id="@+id/datetime2"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:id="@+id/datetime_end"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             app:dtpv_title="Bitis Tarihi Secin"
             tools:ignore="MissingConstraints" />
 
@@ -78,15 +88,6 @@
             android:layout_marginVertical="16dp"
             android:entries="@array/zilsesi" />
 
-        <EditText
-            android:id="@+id/editTextTextMultiLine"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:ems="10"
-            android:gravity="start|top"
-            android:hint="Not Ekleyin"
-            android:inputType="textMultiLine" />
 
         <LinearLayout
             android:layout_width="match_parent"
