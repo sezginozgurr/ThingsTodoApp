@@ -10,6 +10,8 @@ import androidx.room.Room
 import com.brkcnszgn.dateandtimepickerdialog.ClickListener
 import com.example.thingstodoapp.DB.AppDatabase
 import com.example.thingstodoapp.R
+import com.example.thingstodoapp.adapter.TodoListAdapter
+import com.example.thingstodoapp.model.ToModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.fragment_day.*
 import kotlinx.android.synthetic.main.layout_bottom_sheet.*
@@ -50,6 +52,17 @@ class DayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val todoList: List<ToModel>
+        val db: AppDatabase =
+            Room.databaseBuilder(view.context, AppDatabase::class.java, "notes")
+                .allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
+                .build()
+        todoList = db.todoDao().getAllNotes()
+        recycler_todo.adapter = TodoListAdapter(todoList)
+        (recycler_todo.adapter as TodoListAdapter).notifyDataSetChanged()
+
+
 /*        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(p0: AdapterView<*>?) {
                 TODO("Not yet implemented")
@@ -88,11 +101,16 @@ class DayFragment : Fragment() {
         }
         datetime_start.setOnClickListener(ClickListener {})
         datetime_end.setOnClickListener(ClickListener {})
+        btn_add.setOnClickListener {
+            val note: ToModel = ToModel(
+                todo_title.text.toString(),
+                todo_note.text.toString(),
+                datetime_start.text.toString(),
+                datetime_end.text.toString(), "aaa"
+            )
+            db.todoDao().insertAll(note)
 
-        val db: AppDatabase = Room.databaseBuilder(view.context, AppDatabase::class.java, "todo")
-            .allowMainThreadQueries()
-            .fallbackToDestructiveMigration()
-            .build()
+        }
 
     }
 }
