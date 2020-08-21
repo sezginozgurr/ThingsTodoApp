@@ -60,7 +60,7 @@ class DayFragment : Fragment() {
                 .build()
         todoList = db.todoDao().getAllNotes()
         recycler_todo.adapter = TodoListAdapter(todoList)
-        (recycler_todo.adapter as TodoListAdapter).notifyDataSetChanged()
+        (recycler_todo.adapter as TodoListAdapter).notifyDataSetChanged() // degisiklikden sonra ki hali
 
 
 /*        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -98,17 +98,23 @@ class DayFragment : Fragment() {
             } else {
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
             }
+            layoutBottomSheet.visibility = View.VISIBLE
         }
         datetime_start.setOnClickListener(ClickListener {})
         datetime_end.setOnClickListener(ClickListener {})
-        btn_add.setOnClickListener {
+        btn_save.setOnClickListener {
+            val list = todoList as MutableList
             val note: ToModel = ToModel(
                 todo_title.text.toString(),
                 todo_note.text.toString(),
                 datetime_start.text.toString(),
-                datetime_end.text.toString(), "aaa"
+                datetime_end.text.toString(), "zil1"
             )
             db.todoDao().insertAll(note)
+            list.add(note)
+            recycler_todo.adapter = TodoListAdapter(list)
+            layoutBottomSheet.visibility = View.INVISIBLE
+            (recycler_todo.adapter as TodoListAdapter).notifyDataSetChanged()
 
         }
 
