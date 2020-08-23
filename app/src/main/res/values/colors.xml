@@ -4,5 +4,13 @@
     <color name="colorPrimaryDark">#EA6940</color>
     <color name="colorAccent">#D81B60</color>
     <color name="linkedin">#0E76A8</color>
-    <color name="white">#FFFFFF</color>
+    <color name="facebook">#3b5998</color>
+    <color name="google">#ffce44</color>
+    <color name="white">#D82323</color>
+    <color name="color1">#E91E63</color>
+    <color name="color2">#3F51B5</color>
+    <color name="gun">#D1D2D6</color>
+    <color name="color3">#FF5722</color>
+    <color name="color4">#FFC107</color>
+    <color name="color5">#69A7C3</color>
 </resources>

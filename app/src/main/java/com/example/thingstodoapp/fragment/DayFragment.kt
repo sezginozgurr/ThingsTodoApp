@@ -61,22 +61,6 @@ class DayFragment : Fragment() {
         todoList = db.todoDao().getAllNotes()
         recycler_todo.adapter = TodoListAdapter(todoList)
         (recycler_todo.adapter as TodoListAdapter).notifyDataSetChanged() // degisiklikden sonra ki hali
-
-
-/*        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onItemSelected(
-                adapterView: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-            }
-
-        }*/
         spinnersound.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(p0: AdapterView<*>?) {
                 TODO("Not yet implemented")
@@ -119,4 +103,7 @@ class DayFragment : Fragment() {
         }
 
     }
+
+
 }
+

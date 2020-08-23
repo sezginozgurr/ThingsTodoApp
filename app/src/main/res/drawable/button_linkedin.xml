@@ -3,5 +3,5 @@
         android:width="1dp"
         android:color="@color/color_aqua" />
     <corners android:radius="20dp" />
-    <solid android:color="@color/facebook" />
+    <solid android:color="@color/linkedin" />
 </shape>

@@ -24,7 +24,7 @@ internal class PagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(
                 SixMountFragment()
             }
             4 -> {
-                SoundsFragment()
+                DetailFragment()
             }
             else -> DayFragment()
         }

@@ -11,10 +11,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomePage : AppCompatActivity() {
 
-    lateinit var dayFragment: DayFragment
-    lateinit var weekFragment: WeekFragment
-    lateinit var mountFragment: MountFragment
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page)
