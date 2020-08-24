@@ -5,7 +5,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.thingstodoapp.model.ToModel
 
 
-class TodoListAdapter(private val todoList: List<ToModel>) :
+class TodoListAdapter(
+    private val todoList: List<ToModel>,
+    private val onItemClickListener: (ToModel) -> Unit
+) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ToDoHolder(parent)
@@ -14,6 +17,7 @@ class TodoListAdapter(private val todoList: List<ToModel>) :
     override fun getItemCount(): Int = todoList.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as ToDoHolder).bind(todoList[position])
+        (holder as ToDoHolder).bind(todoList[position], onItemClickListener)
+
     }
 }

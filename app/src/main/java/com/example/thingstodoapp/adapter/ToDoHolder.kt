@@ -24,21 +24,33 @@ import kotlin.random.Random
 class ToDoHolder(container: ViewGroup) : RecyclerView.ViewHolder(
     LayoutInflater.from(container.context).inflate(R.layout.row_layout, container, false)
 ) {
-    val cardView: LinearLayout = itemView.findViewById(R.id.cardView)
-    val todoTitle: TextView = itemView.findViewById(R.id.tv_title)
+    private val cardView: LinearLayout = itemView.findViewById(R.id.cardView)
+    private val todoTitle: TextView = itemView.findViewById(R.id.tv_title)
     val todoDescription: TextView = itemView.findViewById(R.id.description)
     val day: TextView = itemView.findViewById(R.id.day)
 
     //val mountNumber: TextView = itemView.findViewById(R.id.mountNumber)
     val hour: TextView = itemView.findViewById(R.id.hour)
 
-    fun bind(todoModel: ToModel) {
+    fun bind(todoModel: ToModel, onItemClickListener: (ToModel) -> Unit) {
         todoTitle.text = todoModel.todo
         todoDescription.text = todoModel.note
         val step = getDateStep(todoModel)
         day.text = step[0]
         hour.text = step[1]
         cardView.setBackgroundColor(randomBackGround())
+        itemView.setOnClickListener {
+            onItemClickListener(todoModel)
+//            val intent = Intent(it.context, DetailFragment::class.java)
+//
+////            intent.putExtra("todo", todoModel.todo)
+////            intent.putExtra("note", todoModel.note)
+////            intent.putExtra("startDate", todoModel.startDate)
+////            intent.putExtra("sound", todoModel.sound)
+//
+//            it.context.startActivity(intent)
+//            onItemClick( todoModel) // sikinti cikarsa burda
+        }
 
     }
 

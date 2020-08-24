@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.room.Room
 import com.brkcnszgn.dateandtimepickerdialog.ClickListener
@@ -19,6 +20,7 @@ import kotlinx.android.synthetic.main.layout_bottom_sheet.*
 
 class DayFragment : Fragment() {
 
+    private var detailFragment: DetailFragment? = null
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<*>
 
     private val bottomSheetCallback = object :
@@ -48,10 +50,12 @@ class DayFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_day, container, false)
 
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        detailFragment = DetailFragment()
         val todoList: List<ToModel>
         val db: AppDatabase =
             Room.databaseBuilder(view.context, AppDatabase::class.java, "notes")
@@ -59,7 +63,9 @@ class DayFragment : Fragment() {
                 .fallbackToDestructiveMigration()
                 .build()
         todoList = db.todoDao().getAllNotes()
-        recycler_todo.adapter = TodoListAdapter(todoList)
+        recycler_todo.adapter = TodoListAdapter(todoList) {
+            Toast.makeText(view.context, "AAAAAAAaa", Toast.LENGTH_SHORT).show()
+        }
         (recycler_todo.adapter as TodoListAdapter).notifyDataSetChanged() // degisiklikden sonra ki hali
         spinnersound.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -96,7 +102,9 @@ class DayFragment : Fragment() {
             )
             db.todoDao().insertAll(note)
             list.add(note)
-            recycler_todo.adapter = TodoListAdapter(list)
+            recycler_todo.adapter = TodoListAdapter(list) {
+
+            }
             layoutBottomSheet.visibility = View.INVISIBLE
             (recycler_todo.adapter as TodoListAdapter).notifyDataSetChanged()
 
