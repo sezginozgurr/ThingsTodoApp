@@ -12,7 +12,7 @@ internal class PagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(
     override fun getItem(position: Int): Fragment {
         return when (position) {
             0 -> {
-                DayFragment()
+                HomePageFragment()
             }
             1 -> {
                 WeekFragment()
@@ -26,7 +26,7 @@ internal class PagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(
             4 -> {
                 DetailFragment()
             }
-            else -> DayFragment()
+            else -> HomePageFragment()
         }
     }
 

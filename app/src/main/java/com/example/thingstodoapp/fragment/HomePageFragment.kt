@@ -1,9 +1,7 @@
 package com.example.thingstodoapp.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -18,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_day.*
 import kotlinx.android.synthetic.main.layout_bottom_sheet.*
 
 
-class DayFragment : Fragment() {
+class HomePageFragment : Fragment(R.layout.fragment_day) {
 
     private var detailFragment: DetailFragment? = null
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<*>
@@ -39,17 +37,6 @@ class DayFragment : Fragment() {
                 }
             }
         }
-
-    }
-
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_day, container, false)
-
 
     }
 
