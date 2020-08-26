@@ -37,7 +37,7 @@ class ToDoHolder(container: ViewGroup) : RecyclerView.ViewHolder(
         todoDescription.text = todoModel.note
         val step = getDateStep(todoModel)
         day.text = step[0]
-        hour.text = step[1]
+        //hour.text = step[1]
         cardView.setBackgroundColor(randomBackGround())
         itemView.setOnClickListener {
             onItemClickListener(todoModel)

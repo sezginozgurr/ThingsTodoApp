@@ -19,12 +19,21 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action
-            android:id="@+id/action_loginFragment_to_dayFragment"
-            app:destination="@id/dayFragment" />
+            android:id="@+id/action_loginFragment_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
     </fragment>
     <fragment
-        android:id="@+id/dayFragment"
+        android:id="@+id/homePageFragment"
         android:name="com.example.thingstodoapp.fragment.HomePageFragment"
-        android:label="DayFragment"
-        tools:layout="@layout/fragment_day" />
+        android:label="fragment_home_page"
+        tools:layout="@layout/fragment_home_page">
+        <action
+            android:id="@+id/action_homePageFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.thingstodoapp.fragment.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
 </navigation>

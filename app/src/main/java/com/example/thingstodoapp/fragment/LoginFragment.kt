@@ -7,7 +7,6 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.thingstodoapp.R
 import com.example.thingstodoapp.databinding.FragmentLoginBinding
-import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
@@ -19,8 +18,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         navController = Navigation.findNavController(view)
         val binding = FragmentLoginBinding.bind(view)
         fragmentLoginBinding = binding
-        logintofacebook.setOnClickListener {
-            navController?.navigate(R.id.action_loginFragment_to_dayFragment)
+        fragmentLoginBinding!!.logintofacebook.setOnClickListener {
+            navController?.navigate(R.id.action_loginFragment_to_homePageFragment)
         }
     }
 }
