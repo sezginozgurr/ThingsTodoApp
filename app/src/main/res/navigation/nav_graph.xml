@@ -10,21 +10,12 @@
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash">
         <action
-            android:id="@+id/action_splashFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.example.thingstodoapp.fragment.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login">
-        <action
-            android:id="@+id/action_loginFragment_to_homePageFragment"
-            app:destination="@id/homePageFragment" />
+            android:id="@+id/action_splashFragment_to_homePageActivity"
+            app:destination="@id/homePageActivity" />
     </fragment>
     <fragment
         android:id="@+id/homePageFragment"
-        android:name="com.example.thingstodoapp.fragment.HomePageFragment"
+        android:name="com.example.thingstodoapp.fragment.DayFragment"
         android:label="fragment_home_page"
         tools:layout="@layout/fragment_home_page">
         <action
@@ -36,4 +27,9 @@
         android:name="com.example.thingstodoapp.fragment.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" />
+    <activity
+        android:id="@+id/homePageActivity"
+        android:name="com.example.thingstodoapp.ui.HomePageActivity"
+        android:label="activity_home_page"
+        tools:layout="@layout/activity_home_page" />
 </navigation>

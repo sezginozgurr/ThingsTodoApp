@@ -8,8 +8,6 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.room.Room
 import com.brkcnszgn.dateandtimepickerdialog.ClickListener
 import com.example.thingstodoapp.DB.AppDatabase
@@ -21,10 +19,10 @@ import kotlinx.android.synthetic.main.fragment_home_page.*
 import kotlinx.android.synthetic.main.layout_bottom_sheet.*
 
 
-class HomePageFragment : Fragment(R.layout.fragment_home_page) {
+class DayFragment : Fragment(R.layout.fragment_home_page) {
+
 
     private var detailFragment: DetailFragment? = null
-    var navController: NavController? = null
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<*>
 
     private val bottomSheetCallback = object :
@@ -41,6 +39,7 @@ class HomePageFragment : Fragment(R.layout.fragment_home_page) {
                 BottomSheetBehavior.STATE_COLLAPSED -> {
                     fab_btn.visibility = View.VISIBLE
                 }
+                else -> fab_btn.visibility = View.VISIBLE
             }
         }
 
@@ -48,9 +47,7 @@ class HomePageFragment : Fragment(R.layout.fragment_home_page) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navController = Navigation.findNavController(view)
         detailFragment = DetailFragment()
-
         val todoList: List<ToModel>
         val db: AppDatabase =
             Room.databaseBuilder(view.context, AppDatabase::class.java, "notes")

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.thingstodoapp.R
 
-class SplashFragment : Fragment() {
+class MonthFragment : Fragment() {
 
 
     override fun onCreateView(
@@ -15,13 +15,6 @@ class SplashFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_splash, container, false)
-
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
+        return inflater.inflate(R.layout.fragment_month, container, false)
     }
 }

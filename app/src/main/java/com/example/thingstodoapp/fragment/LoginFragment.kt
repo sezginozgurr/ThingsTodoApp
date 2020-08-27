@@ -19,7 +19,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         val binding = FragmentLoginBinding.bind(view)
         fragmentLoginBinding = binding
         fragmentLoginBinding!!.logintofacebook.setOnClickListener {
-            navController?.navigate(R.id.action_loginFragment_to_homePageFragment)
+            navController?.navigate(R.id.action_splashFragment_to_homePageActivity)
         }
     }
 }
