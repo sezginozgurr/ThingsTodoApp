@@ -16,7 +16,9 @@ data class ToModel(
     @ColumnInfo(name = "EndDate")
     var endDate: String,
     @ColumnInfo(name = "sound")
-    var sound: String
+    var sound: String,
+    @ColumnInfo(name = "resim")
+    var resim: Int
 ) {
 
 

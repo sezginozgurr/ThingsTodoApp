@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -28,8 +29,8 @@ class ToDoHolder(container: ViewGroup) : RecyclerView.ViewHolder(
     private val todoTitle: TextView = itemView.findViewById(R.id.tv_title)
     val todoDescription: TextView = itemView.findViewById(R.id.description)
     val day: TextView = itemView.findViewById(R.id.day)
-    var clickCard: Boolean = false
-    var lastPosition = -1
+    val icon: ImageView = itemView.findViewById(R.id.icon)
+
 
     //val mountNumber: TextView = itemView.findViewById(R.id.mountNumber)
     val hour: TextView = itemView.findViewById(R.id.hour)
@@ -41,6 +42,7 @@ class ToDoHolder(container: ViewGroup) : RecyclerView.ViewHolder(
         day.text = step[0]
         //hour.text = step[1]
         cardView.setBackgroundColor(randomBackGround())
+        icon.setImageResource(todoModel.resim)
         itemView.setOnClickListener {
             onItemClickListener(todoModel)
 //            val intent = Intent(it.context, DetailFragment::class.java)

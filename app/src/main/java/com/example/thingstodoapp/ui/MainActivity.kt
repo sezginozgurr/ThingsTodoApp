@@ -2,10 +2,8 @@ package com.example.thingstodoapp.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import com.example.thingstodoapp.R
 import com.example.thingstodoapp.adapter.ViewPagerAdapter
-import com.google.android.material.badge.BadgeDrawable
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -20,20 +18,20 @@ class MainActivity : AppCompatActivity() {
                 when (position) {
                     0 -> {
                         tab.text = "Day"
-                        tab.setIcon(R.drawable.ic_baseline)
+                     /*   tab.setIcon(R.drawable.ic_baseline)
                         val badge: BadgeDrawable = tab.orCreateBadge
                         badge.backgroundColor =
-                            ContextCompat.getColor(applicationContext, R.color.linkedin)
+                            ContextCompat.getColor(applicationContext, R.color.linkedin)*/
                     }
                     1 -> {
                         tab.text = "Week"
-                        tab.setIcon(R.drawable.ic_next_week)
+                        /* tab.setIcon(R.drawable.ic_next_week)*/
 
 
                     }
                     2 -> {
                         tab.text = "Month"
-                        tab.setIcon(R.drawable.ic_baseline_monetization_on_24)
+                        /*tab.setIcon(R.drawable.ic_baseline_monetization_on_24)*/
                     }
                 }
 

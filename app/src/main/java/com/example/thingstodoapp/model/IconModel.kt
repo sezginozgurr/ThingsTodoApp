@@ -1,5 +1,9 @@
 package com.example.thingstodoapp.model
 
 
-class IconModel(val img: Int) {
+data class IconModel(
+    val iconImg: Int,
+    val iconTitle: String? = null,
+    var isChecked: Boolean = false
+) {
 }

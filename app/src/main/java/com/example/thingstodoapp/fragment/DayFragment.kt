@@ -12,8 +12,10 @@ import androidx.room.Room
 import com.brkcnszgn.dateandtimepickerdialog.ClickListener
 import com.example.thingstodoapp.DB.AppDatabase
 import com.example.thingstodoapp.R
+import com.example.thingstodoapp.adapter.IconRecyclerAdapter
 import com.example.thingstodoapp.adapter.TodoListAdapter
 import com.example.thingstodoapp.model.ToModel
+import com.example.thingstodoapp.util.Mock
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.fragment_home_page.*
 import kotlinx.android.synthetic.main.layout_bottom_sheet.*
@@ -24,7 +26,8 @@ class DayFragment : Fragment(R.layout.fragment_home_page) {
 
     private var detailFragment: DetailFragment? = null
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<*>
-    private var clickCard: Boolean = false
+    var lastPosition = -1
+    lateinit var adp: IconRecyclerAdapter
 
     private val bottomSheetCallback = object :
         BottomSheetBehavior.BottomSheetCallback() {
@@ -61,21 +64,6 @@ class DayFragment : Fragment(R.layout.fragment_home_page) {
         }
         (recycler_todo.adapter as TodoListAdapter).notifyDataSetChanged() // degisiklikden sonra ki hali
 
-
-/*        spinnersound.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onItemSelected(
-                adapterView: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-            }
-
-        }*/
         val bottomSheetBehavior = BottomSheetBehavior.from(layoutBottomSheet)
         fab_btn.setOnClickListener {
             if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_COLLAPSED) {
@@ -93,7 +81,9 @@ class DayFragment : Fragment(R.layout.fragment_home_page) {
                 todo_title.text.toString(),
                 todo_note.text.toString(),
                 datetime_start.text.toString(),
-                datetime_end.text.toString(), "zil1"
+                datetime_end.text.toString(),
+                "zil1",
+                adp.getItems()[lastPosition]!!.iconImg
             )
             db.todoDao().insertAll(note)
             list.add(note)
@@ -104,46 +94,27 @@ class DayFragment : Fragment(R.layout.fragment_home_page) {
             (recycler_todo.adapter as TodoListAdapter).notifyDataSetChanged()
 
         }
+        adp = IconRecyclerAdapter(Mock.getMockData()) { iconModel, position ->
+
+            if (lastPosition == -1) {
+                lastPosition = position
+                iconModel.isChecked = true
+                adp.updateItem(lastPosition, iconModel)
+            } else {
+                if (lastPosition != position) {
+                    val model = adp.getItems()[lastPosition]
+                    model?.isChecked = false
+                    adp.updateItem(lastPosition, model!!)
+
+                    iconModel.isChecked = true
+                    adp.updateItem(position, iconModel)
+                    lastPosition = position
+                }
+            }
+        }
+        iconRecycle.adapter = adp
 
     }
-
-/*    fun clickFunction() {
-        card1.setOnClickListener {
-            if (!clickCard) {
-                var lastPos = -1
-                if (lastPos == -1) {
-                    lastPos = position
-                    item.setChecked(true)
-                } else {
-                    val toModel = ToModel()
-                    item.setChecked(false)
-                    (recycler_todo.adapter as TodoListAdapter).updateItem(lastPos, toModel)
-                    lastPos = position
-
-                    item.setChecked(true)
-                    (recycler_todo.adapter as TodoListAdapter).updateItem(position, toModel)
-
-                }
-
-                clickCard = true
-                card1.setCardBackgroundColor(
-                    ContextCompat.getColor(
-                        card1.context,
-                        R.color.color_gray
-                    )
-                )
-            } else {
-                clickCard = false
-                card1.setCardBackgroundColor(
-                    ContextCompat.getColor(
-                        card1.context,
-                        R.color.color_white
-                    )
-                )
-            }
-
-        }
-    }*/
 
     fun alertDialog(toModel: ToModel): AlertDialog.Builder {
         val dialog = AlertDialog.Builder(view?.context)
