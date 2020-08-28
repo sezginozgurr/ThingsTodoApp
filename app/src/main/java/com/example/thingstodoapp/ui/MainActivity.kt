@@ -24,11 +24,12 @@ class MainActivity : AppCompatActivity() {
                         val badge: BadgeDrawable = tab.orCreateBadge
                         badge.backgroundColor =
                             ContextCompat.getColor(applicationContext, R.color.linkedin)
-                        badge.isVisible = true
                     }
                     1 -> {
                         tab.text = "Week"
                         tab.setIcon(R.drawable.ic_next_week)
+
+
                     }
                     2 -> {
                         tab.text = "Month"

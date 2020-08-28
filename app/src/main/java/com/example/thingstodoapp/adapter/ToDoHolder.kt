@@ -28,11 +28,13 @@ class ToDoHolder(container: ViewGroup) : RecyclerView.ViewHolder(
     private val todoTitle: TextView = itemView.findViewById(R.id.tv_title)
     val todoDescription: TextView = itemView.findViewById(R.id.description)
     val day: TextView = itemView.findViewById(R.id.day)
+    var clickCard: Boolean = false
+    var lastPosition = -1
 
     //val mountNumber: TextView = itemView.findViewById(R.id.mountNumber)
     val hour: TextView = itemView.findViewById(R.id.hour)
 
-    fun bind(todoModel: ToModel, onItemClickListener: (ToModel) -> Unit) {
+    fun bind(todoModel: ToModel, position: Int, onItemClickListener: (ToModel) -> Unit) {
         todoTitle.text = todoModel.todo
         todoDescription.text = todoModel.note
         val step = getDateStep(todoModel)
@@ -50,9 +52,50 @@ class ToDoHolder(container: ViewGroup) : RecyclerView.ViewHolder(
 //
 //            it.context.startActivity(intent)
 //            onItemClick( todoModel) // sikinti cikarsa burda
+//            if (todoModel.isChecked()){
+//                karti boya
+//            }
         }
 
     }
+
+//    fun click(position: Int,todoModel: ToModel){
+//        card1.setOnClickListener {
+//            if (!clickCard){
+//                if (lastPosition == -1){
+//                    lastPosition = position
+//                    todoModel.setChecked(true)
+//                    (recycler_todo.adapter as TodoListAdapter).updateItem(lastPosition,toModel)
+//                }else{
+//                    val toModel = ToModel()
+//                    item.setChecked(false)
+//                    (recycler_todo.adapter as TodoListAdapter).updateItem(lastPos,toModel)
+//                    lastPos = position
+//
+//                    item.setChecked(true)
+//                    (recycler_todo.adapter as TodoListAdapter).updateItem(position,toModel)
+//
+//                }
+//
+//                clickCard = true
+//                card1.setCardBackgroundColor(
+//                    ContextCompat.getColor(
+//                        card1.context,
+//                        R.color.color_gray
+//                    )
+//                )
+//            }else{
+//                clickCard = false
+//                card1.setCardBackgroundColor(
+//                    ContextCompat.getColor(
+//                        card1.context,
+//                        R.color.color_white
+//                    )
+//                )
+//            }
+//
+//        }
+//    }
 
     fun getDateStep(todoModel: ToModel): List<String> {
         val getDate = todoModel.startDate
@@ -73,7 +116,7 @@ class ToDoHolder(container: ViewGroup) : RecyclerView.ViewHolder(
     fun randomBackGround(): Int {
         val randombg = Random.nextInt(255)
 
-        return Color.argb(255, randombg, randombg, 255)
+        return Color.argb(randombg, randombg, randombg, randombg)
 
     }
 }

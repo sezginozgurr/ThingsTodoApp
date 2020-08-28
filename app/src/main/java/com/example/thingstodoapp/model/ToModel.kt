@@ -18,6 +18,8 @@ data class ToModel(
     @ColumnInfo(name = "sound")
     var sound: String
 ) {
+
+
     @PrimaryKey(autoGenerate = true)
     var toDoId: Int = 0
 }

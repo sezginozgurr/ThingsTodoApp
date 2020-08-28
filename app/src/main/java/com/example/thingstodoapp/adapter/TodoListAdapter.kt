@@ -17,7 +17,12 @@ class TodoListAdapter(
     override fun getItemCount(): Int = todoList.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as ToDoHolder).bind(todoList[position], onItemClickListener)
+        (holder as ToDoHolder).bind(todoList[position], position, onItemClickListener)
+
+    }
+
+    fun updateItem(position: Int, toModel: ToModel) {
+        notifyItemChanged(position, toModel)
 
     }
 }
